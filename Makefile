@@ -2,6 +2,7 @@ WORKDIR := $(shell pwd)
 
 COMMAND_FOR_RUN=
 FILE_NAME=
+TEST_PATH=
 
 help: ## Display help message
 	@echo "Please use \`make <target>' where <target> is one of"
@@ -12,6 +13,9 @@ run_decision_tree: FILE_NAME=src/katas/decission_tree/main.py
 run_decision_tree: run_script ## Run decission tree kata
 
 run_notebook: run_container ## Run notebook on port
+
+run_test: COMMAND_FOR_RUN=pytest ./tests/$(TEST_PATH)
+run_test: run_container ## Run tests.  Use TEST_PATH for set file name (root of the test placed in the tests dir)
 
 run_script: COMMAND_FOR_RUN=python $(FILE_NAME)
 run_script: run_container
@@ -29,13 +33,3 @@ run_container: .build/image
 
 .build:
 	mkdir .build
-
-
-#RUN_SCRIPT='booo'
-#
-#
-#gorod: RUN_SCRIPT='this is GOROD'
-#gorod: printar
-#
-#printar:
-#	echo $(RUN_SCRIPT)
