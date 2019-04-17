@@ -1,2 +1,2 @@
 pytest
-pydevd
+pydevd-pycharm~=191.6605.12

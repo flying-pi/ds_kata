@@ -12,9 +12,14 @@ help: ## Display help message
 run_decision_tree: FILE_NAME=src/katas/decission_tree/main.py
 run_decision_tree: run_script ## Run decission tree kata
 
+run_regresion_liner_set_generation: FILE_NAME=src/katas/regression/utils/liner_regression_generator.py \
+--out_file './data/regression/liner.csv'
+run_regresion_liner_set_generation: run_script ## Generate test set for the liner regression
+
 run_regression: FILE_NAME=src/katas/regression/main.py
 run_regression: run_script ## Run regression_kata
 
+run_notebook: COMMAND_FOR_RUN=start-notebook.sh --NotebookApp.token='empty'
 run_notebook: run_container ## Run notebook on port
 
 run_test: COMMAND_FOR_RUN=pytest ./tests/$(TEST_PATH)
