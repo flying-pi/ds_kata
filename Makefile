@@ -19,7 +19,7 @@ run_regresion_liner_set_generation: run_script ## Generate test set for the line
 run_regression: FILE_NAME=src/katas/regression/main.py
 run_regression: run_script ## Run regression_kata
 
-run_notebook: COMMAND_FOR_RUN=start-notebook.sh --NotebookApp.token='empty'
+run_notebook: COMMAND_FOR_RUN=start-notebook.sh --NotebookApp.token='empty' --ip 0.0.0.0 --no-browser --allow-root
 run_notebook: run_container ## Run notebook on port
 
 run_test: COMMAND_FOR_RUN=pytest ./tests/$(TEST_PATH)
