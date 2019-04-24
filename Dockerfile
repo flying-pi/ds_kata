@@ -11,6 +11,3 @@ ADD requirements.txt /requirements.txt
 
 RUN pip install -r /requirements.txt
 
-RUN node /opt/conda/lib/python3.6/site-packages/jupyterlab/staging/yarn.js install
-
-
