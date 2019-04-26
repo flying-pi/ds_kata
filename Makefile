@@ -30,9 +30,7 @@ run_script: run_container
 
 run_container: .build/image
 	echo  $(COMMAND_FOR_RUN)
-	docker run -it -p 80:8888  \
-	-v $(WORKDIR):/home/jovyan/work/ \
-	ds_kata:latest $(COMMAND_FOR_RUN)
+	export WORKDIR=$(WORKDIR); docker-compose run ds_kata_service $(COMMAND_FOR_RUN)
 
 
 .build/image: .build Dockerfile requirements.txt

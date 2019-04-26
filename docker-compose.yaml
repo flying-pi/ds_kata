@@ -1,0 +1,16 @@
+version: '3.3'
+
+services:
+
+  dockerhost:
+    image: qoomon/docker-host
+    cap_add: [ 'NET_ADMIN', 'NET_RAW' ]
+    restart: on-failure
+
+  ds_kata_service:
+    image: ds_kata:latest
+    ports:
+      - "8888:80"
+    depends_on: [ dockerhost ]
+    volumes:
+      - ${WORKDIR}:/home/jovyan/work/
